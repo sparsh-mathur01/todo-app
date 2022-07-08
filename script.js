@@ -39,23 +39,21 @@ function rendertodo(todos, filter = 'all') {
 
     switch (filter) {
         case "all": {
-            console.log("all todos must be shown");
             content = ""
             todos.forEach((todo, index) => {
                 content += `
             <li data-id=${index}>
             <input type="checkbox" name="completed" ${todo['completed'] ? "checked" : ""}>
             <span>${todo.label}</span>
-            <button class="delete-todo"></button>
+            <button class="delete-todo"><i class='fa fa-trash'></i></button>
             </li>
             `;
-            });
-            list.innerHTML = content;
-            count.innerHTML = todos.filter(todo => !todo['completed']).length;
+        });
+        list.innerHTML = content;
+        count.innerHTML = todos.filter(todo => !todo['completed']).length;
             break;
         }
         case "active": {
-            console.log("active todos must be shown");
             content = ""
             todos.forEach((todo, index) => {
                 if (!todo['completed']) {
@@ -64,6 +62,7 @@ function rendertodo(todos, filter = 'all') {
                     <li data-id=${index}>
                     <input type="checkbox" name="completed" ${todo['completed'] ? "checked" : ""}>
                     <span>${todo.label}</span>
+                    <button class="delete-todo"><i class='fa fa-trash'></i></button>
                     </li>
                     `;
                 }
@@ -73,7 +72,6 @@ function rendertodo(todos, filter = 'all') {
             break;
         }
         case "completed": {
-            console.log("completed todos must be shown");
             content = ""
             todos.forEach((todo, index) => {
                 if (todo['completed']) {
@@ -81,6 +79,7 @@ function rendertodo(todos, filter = 'all') {
                     <li data-id=${index}>
                     <input type="checkbox" name="completed" ${todo['completed'] ? "checked" : ""}>
                     <span>${todo.label}</span>
+                    <button class="delete-todo"><i class='fa fa-trash'></i></button>
                     </li>
                     `;
                 }
@@ -108,8 +107,8 @@ function handleclick(e) {
         todos=todos.filter(todo=>!todo['completed']);
         rendertodo(todos);
     }
-    else if(e.target.classList[0]==='delete-todo'){
-        let index=e.target.parentNode.getAttribute('data-id');
+    else if(e.target.classList[0]==='fa'){
+        let index=parseInt(e.target.parentNode.parentNode.getAttribute('data-id'));
         todos=[...todos.slice(0,index),...todos.slice(index+1)]
         rendertodo(todos,show)
     }
