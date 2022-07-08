@@ -64,7 +64,13 @@ body{
 border-bottom: 1px solid grey;
 }
 .delete-todo{
-    justify-self: flex-end;
+/* background-color: brown; */
+cursor: pointer;
+justify-self: flex-end;
+width:30px;
+height:30px;
+background-image: url(./images/icons-delete.png);
+
 }
 
 .todolist ul button{
