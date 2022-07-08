@@ -15,7 +15,6 @@ body{
 .container{
     width:40%;
     margin:120px auto;
-    /* border:1px solid black; */
 }
 
 .top{
@@ -54,7 +53,7 @@ body{
 }
 
 .todolist ul li{
-    /* margin-top:10px; */
+    font-size: 18px;
     padding:5px 0px;
     display:flex;
     align-items: center;

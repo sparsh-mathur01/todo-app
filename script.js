@@ -1,5 +1,5 @@
 //state
-let todos = [];
+let todos = [{ label: "test", completed: false }];
 
 //selectors
 
@@ -7,8 +7,6 @@ let form = document.forms.todos;
 let input = form.elements.todo;
 let list = document.querySelector("ul");
 let count = document.querySelector(".items-count");
-// console.log(form)
-// console.log(input)
 
 
 
@@ -28,14 +26,13 @@ function addtodo(e) {
     rendertodo(todos);
     todo.value = ""
     todo.focus;
-    // console.log("submit")
 }
 
 function rendertodo(todos) {
     content = ""
-    todos.forEach(todo => {
+    todos.forEach((todo,index) => {
         content += `
-    <li>
+    <li data-id=${index}>
     <input type="checkbox" name="completed">
     <span>${todo.label}</span>
     </li>
@@ -45,8 +42,8 @@ function rendertodo(todos) {
     count.innerHTML = todos.length;
 }
 
-function handleclick(e){
-    // if (e.target)
+function handleclick(e) {
+    console.log(e.target.parentNode)
 }
 
 
@@ -56,8 +53,7 @@ input.focus();
 function init() {
     rendertodo(todos);
     form.addEventListener("submit", addtodo);
-    list.addEventListener("click",handleclick);
+    list.addEventListener("click", handleclick);
 
 }
-
 init();
