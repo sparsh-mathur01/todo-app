@@ -77,6 +77,10 @@
      border-bottom: 1px solid grey;
  }
 
+ .delete-todo{
+    cursor:pointer;
+ }
+
  
 
  .todolist ul button {
